@@ -42,7 +42,7 @@ Vue.use(VueWaiting)
 
 new Vue({
   // your vue config
-  wait: new VueWaiting(),
+  waiting: new VueWaiting(),
 })
 ```
 
@@ -50,7 +50,7 @@ new Vue({
 
 ```vue
 <template>
-  <v-wait for="my list is to load">
+  <v-waiting for="my list is to load">
     <template slot="waiting">
       <div>
         <img src="loading.gif" />
@@ -60,7 +60,7 @@ new Vue({
     <ul>
       <li v-for="item in myList">{{ item }}</li>
     </ul>
-  </v-wait>
+  </v-waiting>
 </template>
 
 <script>
@@ -116,22 +116,22 @@ import VueWaiting from 'vue-waiting'
 Vue.use(VueWaiting) // add VueWaiting as Vue plugin
 ```
 
-Then you should register `wait` property (`VueWaiting` instance) to the Vue instance:
+Then you should register `waiting` property (`VueWaiting` instance) to the Vue instance:
 
 ```js
 new Vue({
   el: '#app',
   store,
-  wait: new VueWaiting({
+  waiting: new VueWaiting({
     // Defaults values are following:
-    useVuex: false,              // Uses Vuex to manage wait state
-    vuexModuleName: 'wait',      // Vuex module name
+    useVuex: false,              // Uses Vuex to manage waiting state
+    vuexModuleName: 'waiting',      // Vuex module name
 
-    registerComponent: true,     // Registers `v-wait` component
-    componentName: 'v-wait',     // <v-wait> component name, you can set `my-loader` etc.
+    registerComponent: true,     // Registers `v-waiting` component
+    componentName: 'v-waiting',     // <v-waiting> component name, you can set `my-loader` etc.
 
-    registerDirective: true,     // Registers `v-wait` directive
-    directiveName: 'wait',       // <span v-wait /> directive name, you can set `my-loader` etc.
+    registerDirective: true,     // Registers `v-waiting` directive
+    directiveName: 'waiting',       // <span v-waiting /> directive name, you can set `my-loader` etc.
 
   }),
 });
@@ -155,9 +155,9 @@ Then you should register `VueWaiting` module:
 new Vue({
   el: '#app',
   store,
-  wait: new VueWaiting({
+  waiting: new VueWaiting({
     useVuex: true, // You must pass this option `true` to use Vuex
-    vuexModuleName: 'vuex-example-module' // It's optional, `wait` by default.
+    vuexModuleName: 'vuex-example-module' // It's optional, `waiting` by default.
   }),
 });
 ```
@@ -179,7 +179,7 @@ Add `vue-waiting/nuxt` to modules section of `nuxt.config.js`
   ],
 
   // Optionally passing options in module top level configuration
-  wait: { useVuex: true }
+  waiting: { useVuex: true }
 }
 ```
 
@@ -191,11 +191,11 @@ You can use this options for customize VueWaiting behavior.
 | ----------- | ---- | ------- | ----------- |
 | `accessorName` | `String` | `"$wait"` | You can change this value to rename the accessor. E.g. if you rename this to `$w`, your `VueWaiting` methods will be accessible by `$w.waits(..)` etc. |
 | `useVuex` | `Boolean` | `false` | Use this value for enabling integration with `Vuex` store. When this value is true `VueWaiting` will store data in `Vuex` store and all changes to this data will be made by dispatching actions to store |
-| `vuexModuleName` | `String` | `"wait"` | Name for `Vuex` store if `useVuex` set to true, otherwise not used. |
-| `registerComponent` | `Boolean` | `true` | Registers `v-wait` component. |
-| `componentName` | `String` | `"v-wait"` | Changes `v-wait` component name. |
-| `registerDirective` | `Boolean` | `true` | Registers `v-wait` directive. |
-| `directiveName` | `String` | `"v-wait"` | Changes `v-wait` directive name. |
+| `vuexModuleName` | `String` | `"waiting"` | Name for `Vuex` store if `useVuex` set to true, otherwise not used. |
+| `registerComponent` | `Boolean` | `true` | Registers `v-waiting` component. |
+| `componentName` | `String` | `"v-waiting"` | Changes `v-waiting` component name. |
+| `registerDirective` | `Boolean` | `true` | Registers `v-waiting` directive. |
+| `directiveName` | `String` | `"v-waiting"` | Changes `v-waiting` directive name. |
 
 ## 🌈 Global Template Helpers
 
@@ -208,7 +208,7 @@ Returns boolean value if any loader exists in page.
 
 ```vue
 <template>
-  <progress-bar v-if="$wait.any">Please wait...</progress-bar>
+  <progress-bar v-if="$wait.any">Please waiting...</progress-bar>
 </template>
 ```
 
@@ -314,84 +314,84 @@ Returns the percentage of the given loader.
 
 You can use directives to make your template cleaner.
 
-#### `v-wait:visible='"loader name"'`
+#### `v-waiting:visible='"loader name"'`
 
 Shows if the given loader is loading.
 
 ```vue
 <template>
-  <progress-bar v-wait:visible='"creating user"'>Creating User...</progress-bar>
+  <progress-bar v-waiting:visible='"creating user"'>Creating User...</progress-bar>
 </template>
 ```
 
-#### `v-wait:hidden='"loader name"'` or `v-wait:visible.not='"loader name"'`
+#### `v-waiting:hidden='"loader name"'` or `v-waiting:visible.not='"loader name"'`
 
 Hides if the given loader is loading.
 
 ```vue
 <template>
-  <main v-wait:hidden='"creating *"'>Some Content</main>
+  <main v-waiting:hidden='"creating *"'>Some Content</main>
 </template>
 ```
 
-#### `v-wait:disabled='"loader name"'`
+#### `v-waiting:disabled='"loader name"'`
 
 Sets `disabled="disabled"` attribute to element if the given loader is loading.
 
 ```vue
 <template>
-  <input v-wait:disabled="'*'" placeholder="Username" />
-  <input v-wait:disabled="'*'" placeholder="Password" />
+  <input v-waiting:disabled="'*'" placeholder="Username" />
+  <input v-waiting:disabled="'*'" placeholder="Password" />
 </template>
 ```
 
-#### `v-wait:enabled='"loader name"'` or `v-wait:disabled.not='"loader name"'`
+#### `v-waiting:enabled='"loader name"'` or `v-waiting:disabled.not='"loader name"'`
 
 Removes `disabled="disabled"` attribute to element if the given loader is loading.
 
 ```vue
 <template>
-  <button v-wait:enabled='"creating user"'>Abort Request</button>
+  <button v-waiting:enabled='"creating user"'>Abort Request</button>
 </template>
 ```
 
-#### `v-wait:click.start='"loader name"'`
+#### `v-waiting:click.start='"loader name"'`
 
 Starts given loader on click.
 
 ```vue
 <template>
-  <button v-wait:click.start='"create user"'>Start loader</button>
+  <button v-waiting:click.start='"create user"'>Start loader</button>
 </template>
 ```
 
-#### `v-wait:click.end='"loader name"'`
+#### `v-waiting:click.end='"loader name"'`
 
 Ends given loader on click.
 
 ```vue
 <template>
-  <button v-wait:click.end='"create user"'>End loader</button>
+  <button v-waiting:click.end='"create user"'>End loader</button>
 </template>
 ```
 
-#### `v-wait:toggle='"loader name"'`
+#### `v-waiting:toggle='"loader name"'`
 
 Toggles given loader on click.
 
 ```vue
 <template>
-  <button v-wait:toggle='"flip flop"'>Toggles the loader</button>
+  <button v-waiting:toggle='"flip flop"'>Toggles the loader</button>
 </template>
 ```
 
-#### `v-wait:click.progress='["loader name", 80]'`
+#### `v-waiting:click.progress='["loader name", 80]'`
 
 Sets the progress of given loader on click.
 
 ```vue
 <template>
-  <button v-wait:click.progress='["downloading", 80]'>Set the "downloading" loader to 80</button>
+  <button v-waiting:click.progress='["downloading", 80]'>Set the "downloading" loader to 80</button>
 </template>
 ```
 
@@ -459,26 +459,26 @@ There is also possibility to use array as a second argument to mapWaitingActions
 
 ### ☢️Advanced Getters and Actions Usage
 
-> The Vuex module name is `wait` by default. If you've changed on config, you should get it by `rootGetters['<vuex module name>/is']` or `rootGetters['<vuex module name>/any']`.
+> The Vuex module name is `waiting` by default. If you've changed on config, you should get it by `rootGetters['<vuex module name>/is']` or `rootGetters['<vuex module name>/any']`.
 
 You can access `vue-waiting`'s Vuex getters using `rootGetters` in Vuex.
 
 ```js
 getters: {
   cartOperationInProgress(state, getters, rootState, rootGetters) {
-    return rootGetters['wait/is']('cart.*');
+    return rootGetters['waiting/is']('cart.*');
   }
 },
 ```
 
-And you can start and end loaders using `wait` actions. You must pass `root: true` option to the `dispatch` method.
+And you can start and end loaders using `waiting` actions. You must pass `root: true` option to the `dispatch` method.
 
 ```js
 actions: {
   async addItemToCart({ dispatch }, item) {
-    dispatch('wait/start', 'cart.addItem', { root: true });
+    dispatch('waiting/start', 'cart.addItem', { root: true });
     await CartService.addItem(item);
-    dispatch('wait/end', 'cart.addItem', { root: true });
+    dispatch('waiting/end', 'cart.addItem', { root: true });
   }
 },
 ```
@@ -511,48 +511,48 @@ methods: {
 
 See also `examples/wrap-example`
 
-## 💧 Using `v-wait` Component
+## 💧 Using `v-waiting` Component
 
-If you disable `registerComponent` option then import and add `v-wait` into components
+If you disable `registerComponent` option then import and add `v-waiting` into components
 
 ```js
 import vLoading from 'vue-waiting/src/components/v-waiting.vue'
 components: {
-  'v-wait': vLoading
+  'v-waiting': vLoading
 }
 ```
 
-In template, you should wrap your content with `v-wait` component to show loading on it.
+In template, you should wrap your content with `v-waiting` component to show loading on it.
 
 ```vue
-<v-wait for='fetching data'>
+<v-waiting for='fetching data'>
   <template slot='waiting'>
     This will be shown when "fetching data" loader starts.
   </template>
 
   This will be shown when "fetching data" loader ends.
-</v-wait>
+</v-waiting>
 ```
 
 Better example for a `button` with loading state:
 
 ```vue
 <button :disabled='$wait.is("creating user")'>
-  <v-wait for='creating user'>
+  <v-waiting for='creating user'>
     <template slot='waiting'>Creating User...</template>
     Create User
-  </v-wait>
+  </v-waiting>
 </button>
 ```
 
 ## 🔁 Transitions
 
-You can use transitions with `v-wait` component.
+You can use transitions with `v-waiting` component.
 
-Just pass `<transition>` props and listeners to the `v-wait` with `transition` prop.
+Just pass `<transition>` props and listeners to the `v-waiting` with `transition` prop.
 
 ```vue
-<v-wait for="users"
+<v-waiting for="users"
   transition="fade"
   mode="out-in"
   :duration="1000"
@@ -563,7 +563,7 @@ Just pass `<transition>` props and listeners to the `v-wait` with `transition` p
     <p>Loading...</p>
   </template>
   My content
-</v-wait>
+</v-waiting>
 ```
 
 ## ⚡️ Making Reusable Loader Components
@@ -577,7 +577,7 @@ In this example above, the **tab gets data from back-end**, and the **table load
 ```vue
 <template lang='pug'>
   <div>
-    <v-wait for="fetching tabs">
+    <v-waiting for="fetching tabs">
       <template slot="waiting">
         <b-tabs>
           <template slot="tabs">
@@ -592,15 +592,15 @@ In this example above, the **tab gets data from back-end**, and the **table load
           <b-nav-item v-for="tab in tabs">{{ tab.name }}</b-nav-item>
         </template>
       </b-tabs>
-    </v-wait>
-    <v-wait for="fetching data">
+    </v-waiting>
+    <v-waiting for="fetching data">
       <table-gradient-spinner slot="waiting" />
       <table>
         <tr v-for="row in data">
           <!-- ...-->
         </tr>
       </table>
-    </v-wait>
+    </v-waiting>
   </div>
 </template>
 ```
@@ -640,12 +640,12 @@ Now you can use your spinner everywhere using `slot='waiting'` attribute:
 
 ```vue
 <template lang="pug">
-  <v-wait for="fetching data">
+  <v-waiting for="fetching data">
     <my-waiter slot="waiting" />
     <div>
       <p>My main content after fetching data...</p>
     </div>
-  </v-wait>
+  </v-waiting>
 </template>
 ```
 
@@ -659,16 +659,16 @@ import { OrbitSpinner } from 'epic-spinners';
 Vue.component('orbit-spinner', OrbitSpinner);
 ```
 
-Then use it in your as a `v-wait`'s `waiting` slot.
+Then use it in your as a `v-waiting`'s `waiting` slot.
 ```vue
-<v-wait for='something to load'>
+<v-waiting for='something to load'>
   <orbit-spinner
     slot='waiting'
     :animation-duration="1500"
     :size="64"
     :color="'#ff1d5e'"
   />
-</v-wait>
+</v-waiting>
 ```
 
 ... and done!
@@ -685,12 +685,12 @@ for running examples locally.
 You can test components using `vue-waiting` but it requires the configuration. Let's take a basic component for instance:
 
 ```vue
-<v-wait for="loading">
+<v-waiting for="loading">
    <Spinner slot="waiting" />
    <ul class="suggestions">
       <li v-for="suggestion in suggestions">{{ suggestion.Name }}</li>
    </ul>
-</v-wait>
+</v-waiting>
 ```
 
 ```js
@@ -703,7 +703,7 @@ it('uses vue-waiting component', () => {
 });
 ```
 
-`vue-test-utils` will replace `v-wait` component with an empty `div`, making it difficult to test correctly.
+`vue-test-utils` will replace `v-waiting` component with an empty `div`, making it difficult to test correctly.
 
 First, make your local Vue instance use `vue-waiting`,
 
@@ -713,13 +713,13 @@ localVue.use(Vuex); // optionally when you use Vuex integration
 localVue.use(VueWaiting);
 ```
 
-Then inject the `wait` property using `VueWaiting` constructor,
+Then inject the `waiting` property using `VueWaiting` constructor,
 
 ```js
 it('uses vue-waiting component', () => {
     const wrapper = shallowMount(SuggestedAddresses, {
       localVue,
-      wait: new VueWaiting()
+      waiting: new VueWaiting()
     });
     expect(wrapper.find('.suggestions').exists()).toBe(true); // it works!
 });
