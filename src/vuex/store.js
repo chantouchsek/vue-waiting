@@ -9,12 +9,12 @@ const mutations = {
 export default {
   namespaced: true,
   state: {
-    waitingFor: [],
+    waitFor: [],
     progresses: {}
   },
   getters: {
-    is: state => waiter => is(state.waitingFor, waiter),
-    any: state => any(state.waitingFor),
+    is: state => waiter => is(state.waitFor, waiter),
+    any: state => any(state.waitFor),
     percent: state => waiter => percent(state.progresses, waiter)
   },
   actions: {
@@ -24,10 +24,10 @@ export default {
   },
   mutations: {
     [mutations.START](state, waiter) {
-      state.waitingFor = start(state.waitingFor, waiter);
+      state.waitFor = start(state.waitFor, waiter);
     },
     [mutations.END](state, waiter) {
-      state.waitingFor = end(state.waitingFor, waiter);
+      state.waitFor = end(state.waitFor, waiter);
       state.progresses = endProgress(state.progresses, waiter);
     },
     [mutations.PROGRESS](state, { waiter, current, total }) {

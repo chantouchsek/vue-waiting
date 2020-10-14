@@ -28,10 +28,11 @@ module.exports = function nuxtVueWaitModule(moduleOptions) {
         fileName: 'vue-waiting.js',
         options: options
     })
+
+    // Transpile escape-string-regexp for IE11 support
+    this.options.build.transpile.push(/^escape-string-regexp/)
 };
 
-// Transpile nanoid (used for oauth2) for IE11 support (#472)
-this.options.build.transpile.push(/^escape-string-regexp/)
 
 // required by nuxt
 module.exports.meta = require('../package.json');
