@@ -25,6 +25,10 @@ If you are a **try and learn** developer, you can start trying the **vue-waiting
 
 [![Edit VueWaiting Sandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/85q3vpm42?autoresize=1&hidenavigation=1&module=%2Fsrc%2Fcomponents%2FMyList.vue)
 
+### Note:
+
+This is a copy work for `VueWait`
+
 ### 1. Install:
 ```bash
 yarn add vue-waiting
@@ -678,7 +682,7 @@ for running examples locally.
 
 ## ✔ Testing components
 
-You can test components using `vue-waiting` but it requires configuration. Let's take a basic component for instance:
+You can test components using `vue-waiting` but it requires the configuration. Let's take a basic component for instance:
 
 ```vue
 <v-wait for="loading">
@@ -723,16 +727,8 @@ it('uses vue-waiting component', () => {
 
 ## 🎯 Contributors
 
- - Fatih Kadir Akın, (creator)
- - Igor, (maintainer, made Vuex-free)
-
-## 🔗 Other Implementations
-
-Since **vue-waiting** based on a very simple idea, it can be implemented on other frameworks.
-
- - [react-wait](https://github.com/f/react-wait): Multiple Process Loader Management for React.
- - [dom-wait](https://github.com/f/dom-wait): Multiple Process Loader Management for vanilla JavaScript.
+ - Chantouch Sek, (writer)
 
 ## 🔑 License
 
-MIT © [Fatih Kadir Akın](https://github.com/f)
+MIT © [Chantouch Sek](https://github.com/chantouch)
