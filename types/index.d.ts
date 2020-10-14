@@ -1,6 +1,8 @@
 import Vue, { PluginFunction } from 'vue';
 import { Store } from 'vuex';
 
+import './vue'
+
 
 type AsyncFunction = ((arg0: any) => Promise<any>) | Promise<any>;
 

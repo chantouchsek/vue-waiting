@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue';
-import type VueWaiting from './index';
+import VueWaiting from './';
 
 declare module '@nuxt/types' {
   interface Context {
