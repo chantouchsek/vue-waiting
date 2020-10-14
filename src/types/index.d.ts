@@ -1,0 +1,119 @@
+import Vue, { PluginFunction } from 'vue';
+import { Store } from 'vuex';
+
+
+type AsyncFunction = ((arg0: any) => Promise<any>) | Promise<any>;
+
+export default class VueWaiting extends VueWaitingInstance {
+  constructor(options?: VueWaitingOptions);
+
+  static install(): PluginFunction<any>;
+
+  static init(Vue: Vue, store: Store<any>): void;
+}
+
+/**
+ * The vue-wait Instance
+ */
+
+export class VueWaitingInstance {
+  /**
+   * Returns boolean value if any loader exists in page.
+   *
+   * @returns {boolean}
+   * @memberOf VueWaitingInstance
+   */
+  any(): boolean;
+
+  /**
+   * Returns boolean value if some of given loaders exists in page.
+   *
+   * @param {(string|string[])} waiter
+   * @returns {boolean}
+   * @memberOf VueWaitingInstance
+   */
+  is(waiter: string|string[]): boolean;
+
+  /**
+   * Returns boolean value if some of given loaders exists in page.
+   *
+   * @param {(string|string[])} waiter
+   * @returns {boolean}
+   * @memberOf VueWaitingInstance
+   */
+  waiting(waiter: string|string[]): boolean;
+
+  /**
+   * Returns the percentage of the given loader.
+   *
+   * @param {string} waiter
+   * @returns {number}
+   * @memberOf VueWaitingInstance
+   */
+  percent(waiter: string): number;
+
+  /**
+   * Starts the given loader.
+   *
+   * @param {string} waiter
+   * @returns {void}
+   * @memberOf VueWaitingInstance
+   */
+  start(waiter: string): void;
+
+  /**
+   * Stops the given loader.
+   *
+   * @param {string} waiter
+   * @returns {void}
+   * @memberOf VueWaitingInstance
+   */
+  end(waiter: string): void;
+
+  /**
+   * Sets the progress of the given loader.
+   *
+   * @param {string} waiter
+   * @param {number} current
+   * @param {number} [total]
+   * @memberOf VueWaitingInstance
+   */
+  progress(waiter: string, current: number, total?: number): Promise<any>;
+
+  waitFor<T extends Function | AsyncFunction>(waiter: string, callback: T, forceSync?: false): T;
+}
+
+export interface VueWaitingOptions{
+  /**
+   * You can change this value to rename the accessor. E.g. if you rename this to $w, your VueWait methods will be accessible by $w.waits(..) etc.
+   */
+  accessorName?: string,
+  /**
+   *  Use this value for enabling integration with Vuex store. When this value is true VueWait will store data in Vuex store and all changes to this data will be made by dispatching actions to store
+   */
+  useVuex?: boolean,
+  /**
+   * Name for Vuex store if useVuex set to true, otherwise not used.
+   */
+  vuexModuleName?: string,
+  /**
+   * Registers v-wait component.
+   */
+  registerComponent?: boolean,
+  /**
+   * Changes v-wait component name.
+   */
+  componentName?: string;
+  /**
+   * Registers v-wait directive.
+   */
+  registerDirective?: boolean;
+  /**
+   * Changes v-wait directive name.
+   */
+  directiveName?: string;
+}
+
+export function mapWaitingGetters(getters: any): any;
+
+export function mapWaitingActions(vuexModuleName: any, actions?: any): any;
