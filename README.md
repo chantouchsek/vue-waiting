@@ -72,12 +72,12 @@ new Vue({
     },
     async created() {
       // start waiting
-      this.$wait.start('my list is to load');
+      this.$waiting.start('my list is to load');
 
       this.myList = await fetch('/my-list-url');
 
       // stop waiting
-      this.$wait.end('my list is to load');
+      this.$waiting.end('my list is to load');
     },
   };
 </script>
@@ -189,7 +189,7 @@ You can use this options for customize VueWaiting behavior.
 
 | Option Name | Type | Default | Description |
 | ----------- | ---- | ------- | ----------- |
-| `accessorName` | `String` | `"$wait"` | You can change this value to rename the accessor. E.g. if you rename this to `$w`, your `VueWaiting` methods will be accessible by `$w.waits(..)` etc. |
+| `accessorName` | `String` | `"$waiting"` | You can change this value to rename the accessor. E.g. if you rename this to `$w`, your `VueWaiting` methods will be accessible by `$w.waits(..)` etc. |
 | `useVuex` | `Boolean` | `false` | Use this value for enabling integration with `Vuex` store. When this value is true `VueWaiting` will store data in `Vuex` store and all changes to this data will be made by dispatching actions to store |
 | `vuexModuleName` | `String` | `"waiting"` | Name for `Vuex` store if `useVuex` set to true, otherwise not used. |
 | `registerComponent` | `Boolean` | `true` | Registers `v-waiting` component. |
@@ -200,7 +200,7 @@ You can use this options for customize VueWaiting behavior.
 ## 🌈 Global Template Helpers
 
 **vue-waiting** provides some helpers to you to use in your templates.
-All features can be obtained from $wait property in Vue components.
+All features can be obtained from $waiting property in Vue components.
 
 #### `.any`
 
@@ -208,7 +208,7 @@ Returns boolean value if any loader exists in page.
 
 ```vue
 <template>
-  <progress-bar v-if="$wait.any">Please waiting...</progress-bar>
+  <progress-bar v-if="$waiting.any">Please waiting...</progress-bar>
 </template>
 ```
 
@@ -218,7 +218,7 @@ Returns boolean value if given loader exists in page.
 
 ```vue
 <template>
-  <progress-bar v-if="$wait.is('creating user')">Creating User...</progress-bar>
+  <progress-bar v-if="$waiting.is('creating user')">Creating User...</progress-bar>
 </template>
 ```
 
@@ -226,7 +226,7 @@ You can use **`waiting`** alias instead of **`is`**.
 
 ```vue
 <template>
-  <div v-if="$wait.waiting('fetching users')">
+  <div v-if="$waiting.waiting('fetching users')">
     Fetching users...
   </div>
 </template>
@@ -238,7 +238,7 @@ Please see [matcher](https://github.com/sindresorhus/matcher/) library to see ho
 
 ```vue
 <template>
-  <progress-bar v-if="$wait.is('creating.*')">Creating something...</progress-bar>
+  <progress-bar v-if="$waiting.is('creating.*')">Creating something...</progress-bar>
 </template>
 ```
 
@@ -248,7 +248,7 @@ Returns boolean value if some of given loaders exists in page.
 
 ```vue
 <template>
-  <progress-bar v-if="$wait.is(['creating user', 'page loading'])">Creating User...</progress-bar>
+  <progress-bar v-if="$waiting.is(['creating user', 'page loading'])">Creating User...</progress-bar>
 </template>
 ```
 
@@ -258,7 +258,7 @@ Starts the given loader.
 
 ```vue
 <template>
-  <button @click="$wait.start('creating user')">Create User</button>
+  <button @click="$waiting.start('creating user')">Create User</button>
 </template>
 ```
 
@@ -268,7 +268,7 @@ Stops the given loader.
 
 ```vue
 <template>
-  <button @click="$wait.end('creating user')">Cancel</button>
+  <button @click="$waiting.end('creating user')">Cancel</button>
 </template>
 ```
 
@@ -278,10 +278,10 @@ Sets the progress of the given loader.
 
 ```vue
 <template>
-  <progress min="0" max="100" :value="$wait.percent('downloading')" />
-  <button @click="$wait.progress('downloading', 10)">Set progress to 10</button>
-  <button @click="$wait.progress('downloading', 50)">Set progress to 50</button>
-  <button @click="$wait.progress('downloading', 50, 200)">Set progress to 50 of 200 (25%)</button>
+  <progress min="0" max="100" :value="$waiting.percent('downloading')" />
+  <button @click="$waiting.progress('downloading', 10)">Set progress to 10</button>
+  <button @click="$waiting.progress('downloading', 50)">Set progress to 50</button>
+  <button @click="$waiting.progress('downloading', 50, 200)">Set progress to 50 of 200 (25%)</button>
 </template>
 ```
 
@@ -291,13 +291,13 @@ To complete the progress, `current` value should be set bigger than `100`.
 If you `total` is given, `current` must be bigger than `total`.
 
 ```vue
-<button @click="$wait.progress('downloading', 101)">Set as downloaded (101 of 100)</button>
+<button @click="$waiting.progress('downloading', 101)">Set as downloaded (101 of 100)</button>
 ```
 
 or
 
 ```vue
-<button @click="$wait.progress('downloading', 5, 6)">Set as downloaded (6 of 5)</button>
+<button @click="$waiting.progress('downloading', 5, 6)">Set as downloaded (6 of 5)</button>
 ```
 
 #### `.percent(loader String)`
@@ -306,7 +306,7 @@ Returns the percentage of the given loader.
 
 ```vue
 <template>
-  <progress min="0" max="100" :value="$wait.percent('downloading')" />
+  <progress min="0" max="100" :value="$waiting.percent('downloading')" />
 </template>
 ```
 
@@ -537,7 +537,7 @@ In template, you should wrap your content with `v-waiting` component to show loa
 Better example for a `button` with loading state:
 
 ```vue
-<button :disabled='$wait.is("creating user")'>
+<button :disabled='$waiting.is("creating user")'>
   <v-waiting for='creating user'>
     <template slot='waiting'>Creating User...</template>
     Create User
