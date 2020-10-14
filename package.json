@@ -37,7 +37,7 @@
     "dev:vue": "poi examples/vue-example/index.js",
     "dev:wrap": "poi examples/wrap-example/index.js",
     "build-gh-pages": "poi build --out-dir=/tmp/gh-pages examples/vuex-example/index.js",
-    "prepublish": "npm build"
+    "prepublish": "npm run build"
   },
   "lint-staged": {
     "src/**/*.js": [
