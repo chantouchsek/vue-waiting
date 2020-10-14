@@ -1,7 +1,7 @@
 {
   "name": "vue-waiting",
   "description": "Vue Plugin for Global Loader Management",
-  "version": "0.0.2-alpha.1",
+  "version": "0.0.2-alpha.2",
   "license": "MIT",
   "author": "Chantouch Sek <chantouchsek.cs83@gmail.com>",
   "keywords": [
@@ -25,7 +25,8 @@
   "files": [
     "dist",
     "src",
-    "nuxt"
+    "nuxt",
+    "types"
   ],
   "scripts": {
     "test": "exit 0;",
@@ -35,7 +36,8 @@
     "dev:vuex": "poi examples/vuex-example/index.js",
     "dev:vue": "poi examples/vue-example/index.js",
     "dev:wrap": "poi examples/wrap-example/index.js",
-    "build-gh-pages": "poi build --out-dir=/tmp/gh-pages examples/vuex-example/index.js"
+    "build-gh-pages": "poi build --out-dir=/tmp/gh-pages examples/vuex-example/index.js",
+    "prepublish": "npm build"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -68,7 +70,7 @@
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.2.4",
     "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.16",
+    "vue-template-compiler": "^2.6.12",
     "vuex": "^3.0.1",
     "webpack": "^4.11.1",
     "webpack-cli": "^3.0.2"
