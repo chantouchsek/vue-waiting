@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@f'
+          scope: '@chantouch'
       - run: yarn publish
         if: github.event == 'push'
         env:
