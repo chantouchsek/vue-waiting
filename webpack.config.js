@@ -4,7 +4,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry: ["./src/vue-waiting.js"],
   output: {
-    library: "VueWait",
+    library: "VueWaiting",
     libraryTarget: "umd",
     filename: "vue-waiting.js",
     globalObject: 'typeof self !== \'undefined\' ? self : this',

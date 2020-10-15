@@ -20,13 +20,13 @@ Usage:
 
 const {resolve} = require('path');
 
-module.exports = function nuxtVueWaitModule(moduleOptions) {
-    const options = Object.assign({}, this.options.wait, moduleOptions);
+module.exports = function nuxtVueWaitingModule(moduleOptions) {
+    const options = Object.assign({}, this.options.waiting, moduleOptions);
     // Register plugin
     this.addPlugin({
         src: resolve(__dirname, 'vue-waiting.template.js'),
         fileName: 'vue-waiting.js',
-        options: options
+        options
     })
 
     // Transpile escape-string-regexp for IE11 support

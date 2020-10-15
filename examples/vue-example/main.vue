@@ -65,7 +65,7 @@
     },
     methods: {
       writeCode() {
-        this.$wait.start('writing code');
+        this.$waiting.start('writing code');
       },
       end() {
         this.$wait.end('writing code');

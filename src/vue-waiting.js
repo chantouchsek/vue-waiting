@@ -182,14 +182,14 @@ export function install(Vue) {
 
   Vue.mixin({
     /**
-     * VueWait init hook, injected into each instances init hooks list.
+     * VueWaiting init hook, injected into each instances init hooks list.
      */
     beforeCreate() {
-      const { wait, store, parent } = this.$options;
+      const { waiting, store, parent } = this.$options;
 
       let instance = null;
-      if (wait) {
-        instance = typeof wait === 'function' ? new wait() : wait;
+      if (waiting) {
+        instance = typeof waiting === 'function' ? new waiting() : waiting;
         // Inject store
         instance.init(Vue, store);
       } else if (parent && parent.__$waitInstance) {
