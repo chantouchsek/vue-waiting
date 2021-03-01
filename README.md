@@ -104,10 +104,6 @@ $ yarn add vue-waiting
 $ npm install vue-waiting
 ```
 
-via Vue UI:
-
-<img src="./resources/vue-ui-install.png" width="600" />
-
 ## 📖 Usage
 
 ```js
