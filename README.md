@@ -120,7 +120,7 @@ new Vue({
     store,
     waiting: new VueWaiting({
         // Defaults values are following:
-        useVuex: false,              // Uses Vuex to manage waiting state
+        useVuex: true,              // Uses Vuex to manage waiting state
         vuexModuleName: 'waiting',      // Vuex module name
 
         registerComponent: true,     // Registers `v-waiting` component
@@ -170,10 +170,10 @@ export default {
         // Simple usage
         'vue-waiting/nuxt',
         // Optionally passing options in module configuration
-        ['vue-waiting/nuxt', {useVuex: true}]
+        ['vue-waiting/nuxt', { useVuex: true }]
     ],
     // Optionally passing options in module top level configuration
-    waiting: {useVuex: true}
+    waiting: { useVuex: true }
 }
 ```
 
@@ -449,9 +449,9 @@ import {mapWaitingActions, mapWaitingGetters} from 'vue-waiting'
 export default {
     methods: {
         ...mapWaitingActions('users', {
-            getUsers: {action: 'getUsers', loader: 'loading users'},
-            createUser: {action: 'createUser', loader: 'creating user'},
-            createSuperUser: {action: 'createUser', loader: 'creating super user'},
+            getUsers: { action: 'getUsers', loader: 'loading users' },
+            createUser: { action: 'createUser', loader: 'creating user' },
+            createSuperUser: { action: 'createUser', loader: 'creating super user' },
         }),
     },
 }
@@ -466,8 +466,8 @@ export default {
     methods: {
         ...mapWaitingActions('users', [
             'getUsers',
-            {method: 'createUser', action: 'createUser', loader: 'creating user'},
-            {method: 'createSuperUser', action: 'createUser', loader: 'creating super user'},
+            { method: 'createUser', action: 'createUser', loader: 'creating user' },
+            { method: 'createSuperUser', action: 'createUser', loader: 'creating super user' },
         ]),
     },
 }
@@ -497,10 +497,10 @@ And you can start and end loaders using `waiting` actions. You must pass `root: 
 ```js
 export default {
     actions: {
-        async addItemToCart({dispatch}, item) {
-            dispatch('waiting/start', 'cart.addItem', {root: true});
+        async addItemToCart({ dispatch }, item) {
+            dispatch('waiting/start', 'cart.addItem', { root: true });
             await CartService.addItem(item);
-            dispatch('waiting/end', 'cart.addItem', {root: true});
+            dispatch('waiting/end', 'cart.addItem', { root: true });
         }
     },
 }
@@ -653,8 +653,8 @@ called `my-waiter`:
 ```vue
 <!-- MySpinner.vue -->
 <i18n>
-  tr:
-    loading: Yükleniyor...
+  kh:
+    loading: កុំពុងទាញ...
   en:
     loading: Loading...
 
@@ -704,7 +704,7 @@ add `slot="waiting"` to the component and Vue handles rest of the work.
 First register the component,
 
 ```js
-import {OrbitSpinner} from 'epic-spinners';
+import { OrbitSpinner } from 'epic-spinners';
 
 Vue.component('orbit-spinner', OrbitSpinner);
 ```
@@ -732,7 +732,7 @@ vuejs/awesome-vue**](https://github.com/vuejs/awesome-vue#loader).
 
 ## 🚌 Run example
 
-Use `npm run dev-vuex`, `npm run dev-vue` or `npm run dev-wrap` commands. for running examples locally.
+Use `npm run vuex:dev`, `npm run vue:dev` or `npm run wrap:dev` or `npm run transition:dev` commands. for running examples locally.
 
 ## ✔ Testing components
 
@@ -745,10 +745,19 @@ instance:
   <v-waiting for="loading">
     <Spinner slot="waiting"/>
     <ul class="suggestions">
-      <li v-for="suggestion in suggestions">{{ suggestion.Name }}</li>
+      <li v-for="suggestion in suggestions">{{ suggestion.name }}</li>
     </ul>
   </v-waiting>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      suggestions: [{ name: 'Suggest 1' }]
+    }
+  },
+}
+</script>
 ```
 
 ```js
@@ -757,7 +766,7 @@ localVue.use(Vuex); // optionally when you use Vuex integration
 
 it('uses vue-waiting component', () => {
     const wrapper = shallowMount(Suggestions, {localVue});
-    expect(wrapper.find('.suggestions').exists()).toBe(true);
+    expect(wrapper.find('.suggestions').exists()).toBeTruthy();
 });
 ```
 
@@ -779,7 +788,7 @@ it('uses vue-waiting component', () => {
         localVue,
         waiting: new VueWaiting()
     });
-    expect(wrapper.find('.suggestions').exists()).toBe(true); // it works!
+    expect(wrapper.find('.suggestions').exists()).toBeTruthy(); // it works!
 });
 ```
 
@@ -789,4 +798,4 @@ it('uses vue-waiting component', () => {
 
 ## 🔑 License
 
-MIT © [Chantouch Sek](https://github.com/chantouch)
+MIT © [Chantouch Sek](https://github.com/Chantouch/vue-waiting/blob/main/LICENSE)
