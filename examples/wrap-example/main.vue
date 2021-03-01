@@ -8,7 +8,7 @@
         This will be shown after load.
       </my-waiter>
     </div>
-    <button @click='fetchDataFromApi' :disable='$wait.is("fetch data")'>
+    <button @click='fetchDataFromApi' :disable='$waiting.is("fetch data")'>
       <my-waiter for='fetch data' message='Fetching data...'>
         <template slot='waiting'>
           <span class="animated">👾</span>
@@ -17,7 +17,7 @@
       </my-waiter>
     </button>
 
-    <button @click='syncCalculator' :disable='$wait.is("sync work")'>
+    <button @click='syncCalculator' :disable='$waiting.is("sync work")'>
       <my-waiter for='sync work' message='Calculating data...'>
         <template slot='waiting'>
           <span class="animated">❤️</span>
@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-  import { waitFor } from '../../src/vue-waiting'
+  import { waitFor } from '../../src/helpers'
 
   export default {
     name: 'wrap-app',

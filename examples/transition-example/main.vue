@@ -4,7 +4,7 @@
     <div class="transitions-demo">
       <div>
         <h2>With transition</h2>
-        <v-wait for="users" transition="fade" mode="out-in">
+        <v-waiting for="users" transition="fade" mode="out-in">
           <template slot="waiting">
             <p>Loading...</p>
           </template>
@@ -17,12 +17,12 @@
             <li>Five</li>
           </ul>
           <div>Second Component</div>
-        </v-wait>
+        </v-waiting>
       </div>
 
       <div>
         <h2>Without transition</h2>
-        <v-wait for="users">
+        <v-waiting for="users">
           <template slot="waiting">
             <p>Loading...</p>
           </template>
@@ -35,7 +35,7 @@
             <li>Five</li>
           </ul>
           <div>Second Component</div>
-        </v-wait>
+        </v-waiting>
       </div>
     </div>
   </div>
@@ -47,10 +47,10 @@ export default {
   methods: {
     getUsers() {
       return new Promise(resolve => {
-        this.$wait.start("users");
+        this.$waiting.start("users");
         setTimeout(() => {
           resolve();
-          this.$wait.end("users");
+          this.$waiting.end("users");
         }, 5000);
       });
     }

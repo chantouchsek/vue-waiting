@@ -1,7 +1,7 @@
 {
   "name": "vue-waiting",
   "description": "Vue Plugin for Global Loader Management",
-  "version": "0.0.3-beta.0",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "Chantouch Sek <chantouchsek.cs83@gmail.com>",
   "keywords": [
@@ -30,12 +30,15 @@
   ],
   "scripts": {
     "test": "exit 0;",
-    "precommit": "lint-staged",
+    "vue:dev": "poi examples/vue-example --serve",
+    "vuex:dev": "poi examples/vuex-example --serve",
+    "wrap:dev": "poi examples/wrap-example --serve",
+    "transition:dev": "poi examples/transition-example --serve",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev-transition": "poi examples/transition-example/index.js",
-    "dev:vuex": "poi examples/vuex-example/index.js",
-    "dev:vue": "poi examples/vue-example/index.js",
-    "dev:wrap": "poi examples/wrap-example/index.js",
+    "dev:transition": "poi examples/transition-example --prod",
+    "dev:vuex": "poi examples/vuex-example --prod",
+    "dev:vue": "poi examples/vue-example --prod",
+    "dev:wrap": "poi examples/wrap-example --prod",
     "build-gh-pages": "poi build --out-dir=/tmp/gh-pages examples/vuex-example/index.js",
     "prepublish": "npm run build"
   },
@@ -50,20 +53,22 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.0",
+    "@commitlint/config-conventional": "^12.0.0",
     "@babel/core": "^7.0.0-beta.49",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
     "babel-loader": "^8.0.0-beta.3",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^0.28.11",
     "epic-spinners": "^1.0.3",
     "escape-string-regexp": "^4.0.0",
     "eslint": "^4.2.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.1.3",
-    "poi": "^12.10.2",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "poi": "^12.10.3",
     "prettier": "^1.19.1",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "vue": "^2.6.12",
@@ -71,11 +76,11 @@
     "vue-loader": "^15.2.4",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.6.12",
-    "vuex": "^3.0.1",
+    "vuex": "^3.6.2",
     "webpack": "^4.11.1",
     "webpack-cli": "^3.0.2"
   },
   "peerDependencies": {
-    "vue": "^2.5.16"
+    "vue": "^2.6.12"
   }
 }

@@ -1,12 +1,5 @@
 <p align="center">
-<img src="./resources/logo.png" width="500">
-</p>
-<p align="center">
  Multiple Process Loader Management for <a href="http://vuejs.org/" rel="nofollow" class="rich-diff-level-one">Vue</a> and (optionally) <a href="http://vuex.vuejs.org/" rel="nofollow" class="rich-diff-level-one">Vuex</a>.
-</p>
-
-<p align="center">
- <strong class="rich-diff-level-one">Read the <a href="https://medium.com/@fkadev/managing-complex-waiting-experiences-on-web-uis-29534d2d92a8" rel="nofollow">Medium post "Managing Complex Waiting Experiences on Web UIs"</a>.</strong>
 </p>
 
 [![npm version](https://badge.fury.io/js/vue-waiting.svg)](https://badge.fury.io/js/vue-waiting)
@@ -15,45 +8,51 @@
 
 ![vue-waiting](https://user-images.githubusercontent.com/196477/42170484-4d91e36a-7e1f-11e8-9cee-816bfe857db2.gif)
 
-> [Play with demo above](https://f.github.io/vue-waiting/).
+> [Play with demo above](https://f.github.io/vue-wait/).
 
-**vue-waiting** helps to manage multiple loading states on the page without any conflict. It's based on a **very simple idea** that manages an array (or Vuex store optionally) with multiple loading states. The **built-in loader component** listens its registered loader and immediately become loading state.
+**vue-waiting** helps to manage multiple loading states on the page without any conflict. It's based on a **very simple
+idea** that manages an array (or Vuex store optionally) with multiple loading states. The **built-in loader component**
+listens its registered loader and immediately become loading state.
 
 # ⏩Quick Start
 
-If you are a **try and learn** developer, you can start trying the **vue-waiting** now using [codesandbox.io](https://codesandbox.io).
+If you are a **try and learn** developer, you can start trying the **vue-waiting** now
+using [codesandbox.io](https://codesandbox.io).
 
 [![Edit VueWaiting Sandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/85q3vpm42?autoresize=1&hidenavigation=1&module=%2Fsrc%2Fcomponents%2FMyList.vue)
 
 ### Note:
 
-This is a copy work for `VueWait`
+This is a copy of work from [VueWait](https://f.github.io/vue-wait), just add more features, and support typescript.
 
 ### 1. Install:
+
 ```bash
 yarn add vue-waiting
 ```
 
 ### 2. Require:
+
 ```js
 import VueWaiting from 'vue-waiting'
 
 Vue.use(VueWaiting)
 
 new Vue({
-  // your vue config
-  waiting: new VueWaiting(),
+    // your vue config
+    waiting: new VueWaiting(),
 })
 ```
 
 ### 3. Use in Your Components
 
 ```vue
+
 <template>
   <v-waiting for="my list is to load">
     <template slot="waiting">
       <div>
-        <img src="loading.gif" />
+        <img src="loading.gif"/>
         Loading the list...
       </div>
     </template>
@@ -64,22 +63,22 @@ new Vue({
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        myList: []
-      }
-    },
-    async created() {
-      // start waiting
-      this.$waiting.start('my list is to load');
+export default {
+  data() {
+    return {
+      myList: []
+    }
+  },
+  async created() {
+    // start waiting
+    this.$waiting.start('my list is to load');
 
-      this.myList = await fetch('/my-list-url');
+    this.myList = await fetch('/my-list-url');
 
-      // stop waiting
-      this.$waiting.end('my list is to load');
-    },
-  };
+    // stop waiting
+    this.$waiting.end('my list is to load');
+  },
+};
 </script>
 ```
 
@@ -87,11 +86,12 @@ new Vue({
 
 # ▶️Detailed Start
 
-## 📦  Requirements
+## 📦 Requirements
 
-- [Vue.js](https://vuejs.org) (v2.0.0+)
+- [Vue.js](https://vuejs.org) (v2.0.0+) < 3.x
 
-## 🚀  Power Supplies
+## 🚀 Power Supplies
+
 - [Vuex](http://vuex.vuejs.org), optionally (v2.0.0+)
 
 ## 🔧 Installation
@@ -120,20 +120,20 @@ Then you should register `waiting` property (`VueWaiting` instance) to the Vue i
 
 ```js
 new Vue({
-  el: '#app',
-  store,
-  waiting: new VueWaiting({
-    // Defaults values are following:
-    useVuex: false,              // Uses Vuex to manage waiting state
-    vuexModuleName: 'waiting',      // Vuex module name
+    el: '#app',
+    store,
+    waiting: new VueWaiting({
+        // Defaults values are following:
+        useVuex: false,              // Uses Vuex to manage waiting state
+        vuexModuleName: 'waiting',      // Vuex module name
 
-    registerComponent: true,     // Registers `v-waiting` component
-    componentName: 'v-waiting',     // <v-waiting> component name, you can set `my-loader` etc.
+        registerComponent: true,     // Registers `v-waiting` component
+        componentName: 'v-waiting',     // <v-waiting> component name, you can set `my-loader` etc.
 
-    registerDirective: true,     // Registers `v-waiting` directive
-    directiveName: 'waiting',       // <span v-waiting /> directive name, you can set `my-loader` etc.
+        registerDirective: true,     // Registers `v-waiting` directive
+        directiveName: 'waiting',       // <span v-waiting /> directive name, you can set `my-loader` etc.
 
-  }),
+    }),
 });
 ```
 
@@ -153,12 +153,12 @@ Then you should register `VueWaiting` module:
 
 ```js
 new Vue({
-  el: '#app',
-  store,
-  waiting: new VueWaiting({
-    useVuex: true, // You must pass this option `true` to use Vuex
-    vuexModuleName: 'vuex-example-module' // It's optional, `waiting` by default.
-  }),
+    el: '#app',
+    store,
+    waiting: new VueWaiting({
+        useVuex: true, // You must pass this option `true` to use Vuex
+        vuexModuleName: 'vuex-example-module' // It's optional, `waiting` by default.
+    }),
 });
 ```
 
@@ -169,17 +169,15 @@ Now `VueWaiting` will use `Vuex` store for data management which can be traced i
 Add `vue-waiting/nuxt` to modules section of `nuxt.config.js`
 
 ```js
-{
-  modules: [
-    // Simple usage
-    'vue-waiting/nuxt'
-
-    // Optionally passing options in module configuration
-    ['vue-waiting/nuxt', { useVuex: true }]
-  ],
-
-  // Optionally passing options in module top level configuration
-  waiting: { useVuex: true }
+export default {
+    modules: [
+        // Simple usage
+        'vue-waiting/nuxt',
+        // Optionally passing options in module configuration
+        ['vue-waiting/nuxt', {useVuex: true}]
+    ],
+    // Optionally passing options in module top level configuration
+    waiting: {useVuex: true}
 }
 ```
 
@@ -199,14 +197,15 @@ You can use this options for customize VueWaiting behavior.
 
 ## 🌈 Global Template Helpers
 
-**vue-waiting** provides some helpers to you to use in your templates.
-All features can be obtained from $waiting property in Vue components.
+**vue-waiting** provides some helpers to you to use in your templates. All features can be obtained from $waiting
+property in Vue components.
 
 #### `.any`
 
 Returns boolean value if any loader exists in page.
 
 ```vue
+
 <template>
   <progress-bar v-if="$waiting.any">Please waiting...</progress-bar>
 </template>
@@ -217,6 +216,7 @@ Returns boolean value if any loader exists in page.
 Returns boolean value if given loader exists in page.
 
 ```vue
+
 <template>
   <progress-bar v-if="$waiting.is('creating user')">Creating User...</progress-bar>
 </template>
@@ -225,6 +225,7 @@ Returns boolean value if given loader exists in page.
 You can use **`waiting`** alias instead of **`is`**.
 
 ```vue
+
 <template>
   <div v-if="$waiting.waiting('fetching users')">
     Fetching users...
@@ -237,6 +238,7 @@ Also you can use matcher to make it more flexible:
 Please see [matcher](https://github.com/sindresorhus/matcher/) library to see how to use matchers.
 
 ```vue
+
 <template>
   <progress-bar v-if="$waiting.is('creating.*')">Creating something...</progress-bar>
 </template>
@@ -247,6 +249,7 @@ Please see [matcher](https://github.com/sindresorhus/matcher/) library to see ho
 Returns boolean value if some of given loaders exists in page.
 
 ```vue
+
 <template>
   <progress-bar v-if="$waiting.is(['creating user', 'page loading'])">Creating User...</progress-bar>
 </template>
@@ -257,6 +260,7 @@ Returns boolean value if some of given loaders exists in page.
 Starts the given loader.
 
 ```vue
+
 <template>
   <button @click="$waiting.start('creating user')">Create User</button>
 </template>
@@ -267,6 +271,7 @@ Starts the given loader.
 Stops the given loader.
 
 ```vue
+
 <template>
   <button @click="$waiting.end('creating user')">Cancel</button>
 </template>
@@ -277,8 +282,9 @@ Stops the given loader.
 Sets the progress of the given loader.
 
 ```vue
+
 <template>
-  <progress min="0" max="100" :value="$waiting.percent('downloading')" />
+  <progress min="0" max="100" :value="$waiting.percent('downloading')"/>
   <button @click="$waiting.progress('downloading', 10)">Set progress to 10</button>
   <button @click="$waiting.progress('downloading', 50)">Set progress to 50</button>
   <button @click="$waiting.progress('downloading', 50, 200)">Set progress to 50 of 200 (25%)</button>
@@ -287,16 +293,18 @@ Sets the progress of the given loader.
 
 ##### Completing the Progress
 
-To complete the progress, `current` value should be set bigger than `100`.
-If you `total` is given, `current` must be bigger than `total`.
+To complete the progress, `current` value should be set bigger than `100`. If you `total` is given, `current` must be
+bigger than `total`.
 
 ```vue
+
 <button @click="$waiting.progress('downloading', 101)">Set as downloaded (101 of 100)</button>
 ```
 
 or
 
 ```vue
+
 <button @click="$waiting.progress('downloading', 5, 6)">Set as downloaded (6 of 5)</button>
 ```
 
@@ -305,8 +313,9 @@ or
 Returns the percentage of the given loader.
 
 ```vue
+
 <template>
-  <progress min="0" max="100" :value="$waiting.percent('downloading')" />
+  <progress min="0" max="100" :value="$waiting.percent('downloading')"/>
 </template>
 ```
 
@@ -319,6 +328,7 @@ You can use directives to make your template cleaner.
 Shows if the given loader is loading.
 
 ```vue
+
 <template>
   <progress-bar v-waiting:visible='"creating user"'>Creating User...</progress-bar>
 </template>
@@ -329,6 +339,7 @@ Shows if the given loader is loading.
 Hides if the given loader is loading.
 
 ```vue
+
 <template>
   <main v-waiting:hidden='"creating *"'>Some Content</main>
 </template>
@@ -339,9 +350,10 @@ Hides if the given loader is loading.
 Sets `disabled="disabled"` attribute to element if the given loader is loading.
 
 ```vue
+
 <template>
-  <input v-waiting:disabled="'*'" placeholder="Username" />
-  <input v-waiting:disabled="'*'" placeholder="Password" />
+  <input v-waiting:disabled="'*'" placeholder="Username"/>
+  <input v-waiting:disabled="'*'" placeholder="Password"/>
 </template>
 ```
 
@@ -350,6 +362,7 @@ Sets `disabled="disabled"` attribute to element if the given loader is loading.
 Removes `disabled="disabled"` attribute to element if the given loader is loading.
 
 ```vue
+
 <template>
   <button v-waiting:enabled='"creating user"'>Abort Request</button>
 </template>
@@ -360,6 +373,7 @@ Removes `disabled="disabled"` attribute to element if the given loader is loadin
 Starts given loader on click.
 
 ```vue
+
 <template>
   <button v-waiting:click.start='"create user"'>Start loader</button>
 </template>
@@ -370,6 +384,7 @@ Starts given loader on click.
 Ends given loader on click.
 
 ```vue
+
 <template>
   <button v-waiting:click.end='"create user"'>End loader</button>
 </template>
@@ -380,6 +395,7 @@ Ends given loader on click.
 Toggles given loader on click.
 
 ```vue
+
 <template>
   <button v-waiting:toggle='"flip flop"'>Toggles the loader</button>
 </template>
@@ -390,6 +406,7 @@ Toggles given loader on click.
 Sets the progress of given loader on click.
 
 ```vue
+
 <template>
   <button v-waiting:click.progress='["downloading", 80]'>Set the "downloading" loader to 80</button>
 </template>
@@ -399,59 +416,65 @@ Sets the progress of given loader on click.
 
 **vue-waiting** provides `mapWaitingActions` and `mapWaitingGetters` mapper to be used with your Vuex stores.
 
-Let's assume you have a store and async **action**s called `createUser` and `updateUser`.
-It will call the methods you map and will start loaders while action is resolved.
+Let's assume you have a store and async **action**s called `createUser` and `updateUser`. It will call the methods you
+map and will start loaders while action is resolved.
 
 ```js
-import { mapWaitingActions, mapWaitingGetters } from 'vue-waiting'
+import {mapWaitingActions, mapWaitingGetters} from 'vue-waiting'
 
-// ...
-  methods: {
-    ...mapWaitingActions('users', {
-      getUsers: 'loading users',
-      createUser: 'creating user',
-      updateUser: 'updating user',
-    }),
-  },
-  computed: {
-    ...mapWaitingGetters({
-      somethingWithUsers: [
-        'loading users',
-        'creating user',
-        'updating user',
-      ],
-      deletingUser: 'deleting user',
-    }),
-  }
+export default {
+    methods: {
+        ...mapWaitingActions('users', {
+            getUsers: 'loading users',
+            createUser: 'creating user',
+            updateUser: 'updating user',
+        }),
+    },
+    computed: {
+        ...mapWaitingGetters({
+            somethingWithUsers: [
+                'loading users',
+                'creating user',
+                'updating user',
+            ],
+            deletingUser: 'deleting user',
+        }),
+    }
+}
 // ...
 ```
 
 You can also map **action** to custom method and customize loader name like in example below:
 
 ```js
-import { mapWaitingActions, mapWaitingGetters } from 'vue-waiting'
+import {mapWaitingActions, mapWaitingGetters} from 'vue-waiting'
 
 // ...
-  methods: {
-    ...mapWaitingActions('users', {
-      getUsers: { action: 'getUsers', loader: 'loading users' },
-      createUser: { action: 'createUser', loader: 'creating user'},
-      createSuperUser: { action: 'createUser', loader: 'creating super user' },
-    }),
-  },
+export default {
+    methods: {
+        ...mapWaitingActions('users', {
+            getUsers: {action: 'getUsers', loader: 'loading users'},
+            createUser: {action: 'createUser', loader: 'creating user'},
+            createSuperUser: {action: 'createUser', loader: 'creating super user'},
+        }),
+    },
+}
 // ...
 ```
 
 There is also possibility to use array as a second argument to mapWaitingActions:
+
 ```js
 // ...
-  methods: {
-    ...mapWaitingActions('users', [
-      'getUsers',
-      { method: 'createUser', action: 'createUser', loader: 'creating user'},
-      { method: 'createSuperUser', action: 'createUser', loader: 'creating super user' },
-    ]),
-  },
+export default {
+    methods: {
+        ...mapWaitingActions('users', [
+            'getUsers',
+            {method: 'createUser', action: 'createUser', loader: 'creating user'},
+            {method: 'createSuperUser', action: 'createUser', loader: 'creating super user'},
+        ]),
+    },
+}
 // ...
 
 
@@ -464,49 +487,57 @@ There is also possibility to use array as a second argument to mapWaitingActions
 You can access `vue-waiting`'s Vuex getters using `rootGetters` in Vuex.
 
 ```js
-getters: {
-  cartOperationInProgress(state, getters, rootState, rootGetters) {
-    return rootGetters['waiting/is']('cart.*');
-  }
-},
+export default {
+    getters: {
+        cartOperationInProgress(state, getters, rootState, rootGetters) {
+            return rootGetters['waiting/is']('cart.*');
+        }
+    },
+}
 ```
 
 And you can start and end loaders using `waiting` actions. You must pass `root: true` option to the `dispatch` method.
 
 ```js
-actions: {
-  async addItemToCart({ dispatch }, item) {
-    dispatch('waiting/start', 'cart.addItem', { root: true });
-    await CartService.addItem(item);
-    dispatch('waiting/end', 'cart.addItem', { root: true });
-  }
-},
+export default {
+    actions: {
+        async addItemToCart({dispatch}, item) {
+            dispatch('waiting/start', 'cart.addItem', {root: true});
+            await CartService.addItem(item);
+            dispatch('waiting/end', 'cart.addItem', {root: true});
+        }
+    },
+}
 ```
 
 #### `waitFor(loader String, func Function [,forceSync = false])`
 
-Decorator that wraps function, will trigger a loading and will end loader after the original function (`func` argument) is finished.
+Decorator that wraps function, will trigger a loading and will end loader after the original function (`func` argument)
+is finished.
 
 By default `waitFor` return async function, if you want to wrap default sync function pass `true` in last argument
 
 _Example using with async function_
 
 ```js
-import { waitFor } from 'vue-waiting';
+import {waitFor} from 'vue-waiting';
 
-...
-methods: {
-  fetchDataFromApi: waitFor('fetch data', async function () {
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
+// ...
+export default {
+    methods: {
+        fetchDataFromApi: waitFor('fetch data', async function () {
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            // do work here
+            await sleep(3000);
+            // simulate some api call
+            this.fetchResponse = Math.random()
+        })
     }
-    // do work here
-    await sleep(3000);
-    // simulate some api call
-    this.fetchResponse = Math.random()
-  })
 }
-...
+// ...
 ```
 
 See also `examples/wrap-example`
@@ -517,32 +548,41 @@ If you disable `registerComponent` option then import and add `v-waiting` into c
 
 ```js
 import vLoading from 'vue-waiting/src/components/v-waiting.vue'
-components: {
-  'v-waiting': vLoading
+
+export default {
+    components: {
+        'v-waiting': vLoading
+    }
 }
 ```
 
 In template, you should wrap your content with `v-waiting` component to show loading on it.
 
 ```vue
-<v-waiting for='fetching data'>
-  <template slot='waiting'>
-    This will be shown when "fetching data" loader starts.
-  </template>
 
-  This will be shown when "fetching data" loader ends.
-</v-waiting>
+<template>
+  <v-waiting for='fetching data'>
+    <template slot='waiting'>
+      This will be shown when "fetching data" loader starts.
+    </template>
+
+    This will be shown when "fetching data" loader ends.
+  </v-waiting>
+</template>
 ```
 
 Better example for a `button` with loading state:
 
 ```vue
-<button :disabled='$waiting.is("creating user")'>
-  <v-waiting for='creating user'>
-    <template slot='waiting'>Creating User...</template>
-    Create User
-  </v-waiting>
-</button>
+
+<template>
+  <button :disabled='$waiting.is("creating user")'>
+    <v-waiting for='creating user'>
+      <template slot='waiting'>Creating User...</template>
+      Create User
+    </v-waiting>
+  </button>
+</template>
 ```
 
 ## 🔁 Transitions
@@ -552,37 +592,43 @@ You can use transitions with `v-waiting` component.
 Just pass `<transition>` props and listeners to the `v-waiting` with `transition` prop.
 
 ```vue
-<v-waiting for="users"
-  transition="fade"
-  mode="out-in"
-  :duration="1000"
-  enter-active-class="enter-active"
-  @leave='someAwesomeFinish()'
+
+<template>
+  <v-waiting for="users"
+             transition="fade"
+             mode="out-in"
+             :duration="1000"
+             enter-active-class="enter-active"
+             @leave='someAwesomeFinish()'
   >
-  <template slot="waiting">
-    <p>Loading...</p>
-  </template>
-  My content
-</v-waiting>
+    <template slot="waiting">
+      <p>Loading...</p>
+    </template>
+    My content
+  </v-waiting>
+</template>
 ```
 
 ## ⚡️ Making Reusable Loader Components
 
-With reusable loader components, you will be able to use custom loader components as example below. This will allow you to create better **user loading experience**.
+With reusable loader components, you will be able to use custom loader components as example below. This will allow you
+to create better **user loading experience**.
 
 <img src="./resources/vue-waiting-2.gif" width="480">
 
-In this example above, the **tab gets data from back-end**, and the **table loads data from back-end at the same time**. With **vue-waiting**, you will be able to manage these two seperated loading processes easily:
+In this example above, the **tab gets data from back-end**, and the **table loads data from back-end at the same time**.
+With **vue-waiting**, you will be able to manage these two seperated loading processes easily:
 
 ```vue
-<template lang='pug'>
+
+<template>
   <div>
     <v-waiting for="fetching tabs">
       <template slot="waiting">
         <b-tabs>
           <template slot="tabs">
             <b-nav-item active="active" disabled>
-              <v-icon name="circle-o-notch" spin="spin" />
+              <v-icon name="circle-o-notch" spin="spin"/>
             </b-nav-item>
           </template>
         </b-tabs>
@@ -594,7 +640,7 @@ In this example above, the **tab gets data from back-end**, and the **table load
       </b-tabs>
     </v-waiting>
     <v-waiting for="fetching data">
-      <table-gradient-spinner slot="waiting" />
+      <table-gradient-spinner slot="waiting"/>
       <table>
         <tr v-for="row in data">
           <!-- ...-->
@@ -605,7 +651,8 @@ In this example above, the **tab gets data from back-end**, and the **table load
 </template>
 ```
 
-You may want to design your own reusable loader for your project. You better create a wrapper component called `my-waiter`:
+You may want to design your own reusable loader for your project. You better create a wrapper component
+called `my-waiter`:
 
 ```vue
 <!-- MySpinner.vue -->
@@ -614,34 +661,37 @@ You may want to design your own reusable loader for your project. You better cre
     loading: Yükleniyor...
   en:
     loading: Loading...
+
 </i18n>
 
 <template>
   <div class="loading-spinner">
-    <v-icon name="refresh" spin="spin" />
+    <v-icon name="refresh" spin="spin"/>
     <span>{{ $t('loading') }}</span>
   </div>
 </template>
 
 <style scoped lang="scss">
-  .loading-spinner {
-    opacity: 0.5;
-    margin: 50px auto;
-    text-align: center;
-    .fa-icon {
-      vertical-align: middle;
-      margin-right: 10px;
-    }
+.loading-spinner {
+  opacity: 0.5;
+  margin: 50px auto;
+  text-align: center;
+
+  .fa-icon {
+    vertical-align: middle;
+    margin-right: 10px;
   }
+}
 </style>
 ```
 
 Now you can use your spinner everywhere using `slot='waiting'` attribute:
 
 ```vue
-<template lang="pug">
+
+<template>
   <v-waiting for="fetching data">
-    <my-waiter slot="waiting" />
+    <my-waiter slot="waiting"/>
     <div>
       <p>My main content after fetching data...</p>
     </div>
@@ -651,46 +701,58 @@ Now you can use your spinner everywhere using `slot='waiting'` attribute:
 
 ## 📦 Using with external spinner libraries
 
-You can use `vue-waiting` with another spinner libraries like [epic-spinners](https://github.com/epicmaxco/epic-spinners) or other libraries. You just need to add `slot="waiting"` to the component and Vue handles rest of the work.
+You can use `vue-waiting` with another spinner libraries
+like [epic-spinners](https://github.com/epicmaxco/epic-spinners) or other libraries. You just need to
+add `slot="waiting"` to the component and Vue handles rest of the work.
 
 First register the component,
+
 ```js
-import { OrbitSpinner } from 'epic-spinners';
+import {OrbitSpinner} from 'epic-spinners';
+
 Vue.component('orbit-spinner', OrbitSpinner);
 ```
 
 Then use it in your as a `v-waiting`'s `waiting` slot.
+
 ```vue
-<v-waiting for='something to load'>
-  <orbit-spinner
-    slot='waiting'
-    :animation-duration="1500"
-    :size="64"
-    :color="'#ff1d5e'"
-  />
-</v-waiting>
+
+<template>
+  <v-waiting for='something to load'>
+    <orbit-spinner
+        slot='waiting'
+        :animation-duration="1500"
+        :size="64"
+        :color="'#ff1d5e'"
+    />
+  </v-waiting>
+</template>
 ```
 
 ... and done!
 
-For other libraries you can use, please see [Loaders section of **vuejs/awesome-vue**](https://github.com/vuejs/awesome-vue#loader).
+For other libraries you can use, please see [Loaders section of **
+vuejs/awesome-vue**](https://github.com/vuejs/awesome-vue#loader).
 
 ## 🚌 Run example
 
-Use `npm run dev-vuex`, `npm run dev-vue` or `npm run dev-wrap` commands.
-for running examples locally.
+Use `npm run dev-vuex`, `npm run dev-vue` or `npm run dev-wrap` commands. for running examples locally.
 
 ## ✔ Testing components
 
-You can test components using `vue-waiting` but it requires the configuration. Let's take a basic component for instance:
+You can test components using `vue-waiting` but it requires the configuration. Let's take a basic component for
+instance:
 
 ```vue
-<v-waiting for="loading">
-   <Spinner slot="waiting" />
-   <ul class="suggestions">
+
+<template>
+  <v-waiting for="loading">
+    <Spinner slot="waiting"/>
+    <ul class="suggestions">
       <li v-for="suggestion in suggestions">{{ suggestion.Name }}</li>
-   </ul>
-</v-waiting>
+    </ul>
+  </v-waiting>
+</template>
 ```
 
 ```js
@@ -698,7 +760,7 @@ const localVue = createLocalVue();
 localVue.use(Vuex); // optionally when you use Vuex integration
 
 it('uses vue-waiting component', () => {
-    const wrapper = shallowMount(Suggestions, { localVue });
+    const wrapper = shallowMount(Suggestions, {localVue});
     expect(wrapper.find('.suggestions').exists()).toBe(true);
 });
 ```
@@ -718,8 +780,8 @@ Then inject the `waiting` property using `VueWaiting` constructor,
 ```js
 it('uses vue-waiting component', () => {
     const wrapper = shallowMount(SuggestedAddresses, {
-      localVue,
-      waiting: new VueWaiting()
+        localVue,
+        waiting: new VueWaiting()
     });
     expect(wrapper.find('.suggestions').exists()).toBe(true); // it works!
 });
@@ -727,7 +789,7 @@ it('uses vue-waiting component', () => {
 
 ## 🎯 Contributors
 
- - Chantouch Sek, (writer)
+- Chantouch Sek, (writer)
 
 ## 🔑 License
 

@@ -1,65 +1,62 @@
 function bind(el, binding, vNode, oldVNode) {
-  const { arg, modifiers, value } = binding;
-  const instance = vNode.context.__$waitInstance;
+  const { arg, modifiers, value } = binding
+  const instance = vNode.context.__$waitingInstance
   switch (arg) {
     case 'click':
       if (modifiers.start) {
-        el.addEventListener('click', () => instance.start(value), false);
-        break;
+        el.addEventListener('click', () => instance.start(value), false)
+        break
       }
       if (modifiers.end) {
-        el.addEventListener('click', () => instance.end(value), false);
-        break;
+        el.addEventListener('click', () => instance.end(value), false)
+        break
       }
       if (modifiers.progress) {
-        el.addEventListener('click', () => instance.progress(...value), false);
-        break;
+        el.addEventListener('click', () => instance.progress(...value), false)
+        break
       }
-      break;
+      break
     case 'toggle':
       el.addEventListener(
         'click',
         () => {
-          const isWaiting = instance.is(value);
+          const isWaiting = instance.is(value)
           if (!isWaiting) {
-            instance.start(value);
+            instance.start(value)
           } else {
-            instance.end(value);
+            instance.end(value)
           }
         },
         false
-      );
-      break;
+      )
+      break
   }
 
-  update(el, binding, vNode, oldVNode);
+  update(el, binding, vNode, oldVNode)
 }
 
 function update(el, binding, vNode, oldVNode) {
-  const { arg, modifiers, value } = binding;
-  const instance = vNode.context.__$waitInstance;
+  const { arg, modifiers, value } = binding
+  const instance = vNode.context.__$waitingInstance
 
-  let isWaiting = instance.is(value);
+  let isWaiting = instance.is(value)
   if (modifiers.not || ['hidden', 'enabled'].includes(arg)) {
-    isWaiting = !isWaiting;
+    isWaiting = !isWaiting
   }
 
-  const originalDisplay = el.style.display === 'none' ? '' : el.style.display;
+  const originalDisplay = el.style.display === 'none' ? '' : el.style.display
   switch (arg) {
     case 'visible':
     case 'hidden':
-      el.style.display = !isWaiting ? 'none' : originalDisplay;
-      break;
+      el.style.display = !isWaiting ? 'none' : originalDisplay
+      break
     case 'enabled':
     case 'disabled':
       isWaiting
         ? el.setAttribute('disabled', true)
-        : el.removeAttribute('disabled');
-      break;
+        : el.removeAttribute('disabled')
+      break
   }
 }
 
-export default {
-  bind,
-  update
-};
+export default { bind, update }

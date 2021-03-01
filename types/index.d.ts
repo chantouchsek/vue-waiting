@@ -116,5 +116,5 @@ export interface VueWaitingOptions{
 }
 
 export function mapWaitingGetters(getters: any): any;
-
 export function mapWaitingActions(vuexModuleName: any, actions?: any): any;
+export function waitFor(waiter: any, func: Function, forceSync?: boolean): any;

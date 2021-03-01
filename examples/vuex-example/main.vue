@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <div class="container">
-      <v-wait message='Something loading! Lovely...'>
+      <v-waiting message='Something loading! Lovely...'>
         <template slot='waiting'>
           <span class="animated">❤️</span>
         </template>
         This will be shown after load.
-      </v-wait>
+      </v-waiting>
     </div>
     <button @click='writeCode()' :disable='$l.is("writing code")'>
-      <v-wait for='writing code' message='Writing Code...'>
+      <v-waiting for='writing code' message='Writing Code...'>
         <template slot='waiting'>
           <span class="animated">️️♻️</span>
         </template>
         Write Code
-      </v-wait>
+      </v-waiting>
     </button>
     <button @click='end()' :disabled='!$l.is("writing code")'>
       <span v-if='$l.is("writing code")'>Stop Coding</span>
@@ -32,7 +32,7 @@
     </p>
     <ul class="list">
       <li v-for='loader in loaders' :key='loader + Math.random()' @click='toggleLoader(loader)'>
-        <v-wait :for='loader'>
+        <v-waiting :for='loader'>
           <template slot='waiting' v-if='loader == "c"'>
             <span class="animated">🎉</span>
           </template>
@@ -40,17 +40,17 @@
             <span class="animated">👋🏻</span>
           </template>
           {{ loader }}
-        </v-wait>
+        </v-waiting>
       </li>
     </ul>
     <hr>
     <button @click='incrementAsync'>
-      <v-wait for="incrementing" message='incrementing...'>
+      <v-waiting for="incrementing" message='incrementing...'>
         <template slot='waiting'>
           <span class="animated">+</span>
         </template>
         <code>mapWaitingActions</code> {{ count }}
-      </v-wait>
+      </v-waiting>
     </button>
     <span v-if='isIncrementing'>is incrementing...</span>
     <hr>
@@ -68,11 +68,11 @@
     <button @click='writeCode()'>
       Start <code>writing code</code>
     </button>
-    <button v-wait:click.progress="['writing code', 10]">Set progress to 10</button>
-    <button v-wait:click.progress="['writing code', 50]">Set progress to 50</button>
-    <button v-wait:click.progress="['writing code', 100, 100]">Set progress to 100 of 100</button>
-    <button v-wait:click.progress="['writing code', 101]">Set progress to 101 (complete)</button>
-    <button v-wait:click.progress="['writing code', 50, 200]">Set progress to 50 of 200 (25%)</button>
+    <button v-waiting:click.progress="['writing code', 10]">Set progress to 10</button>
+    <button v-waiting:click.progress="['writing code', 50]">Set progress to 50</button>
+    <button v-waiting:click.progress="['writing code', 100, 100]">Set progress to 100 of 100</button>
+    <button v-waiting:click.progress="['writing code', 101]">Set progress to 101 (complete)</button>
+    <button v-waiting:click.progress="['writing code', 50, 200]">Set progress to 50 of 200 (25%)</button>
   </div>
 </template>
 
