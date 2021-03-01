@@ -44,12 +44,10 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "prettier --single-quote --write",
-      "git add"
+      "prettier --single-quote --write"
     ],
     "examples/**/*.js": [
-      "prettier --single-quote --write",
-      "git add"
+      "prettier --single-quote --write"
     ]
   },
   "devDependencies": {
