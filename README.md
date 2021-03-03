@@ -2,7 +2,10 @@
  Multiple Process Loader Management for <a href="http://vuejs.org/" rel="nofollow" class="rich-diff-level-one">Vue</a> and (optionally) <a href="http://vuex.vuejs.org/" rel="nofollow" class="rich-diff-level-one">Vuex</a>.
 </p>
 
-[![npm version](https://badge.fury.io/js/vue-waiting.svg)](https://badge.fury.io/js/vue-waiting)
+[![Latest Version on NPM](https://img.shields.io/npm/v/vue-waiting.svg?style=flat-square)](https://npmjs.com/package/vue-waiting)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![npm](https://img.shields.io/npm/dt/vue-waiting.svg?style=flat-square)](https://npmjs.com/package/vue-waiting)
+[![npm](https://img.shields.io/npm/dm/vue-waiting.svg?style=flat-square)](https://npmjs.com/package/vue-waiting)
 
 ---
 
