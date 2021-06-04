@@ -3,7 +3,7 @@
 </p>
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/vue-waiting.svg?style=flat-square)](https://npmjs.com/package/vue-waiting)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![npm](https://img.shields.io/npm/dt/vue-waiting.svg?style=flat-square)](https://npmjs.com/package/vue-waiting)
 [![npm](https://img.shields.io/npm/dm/vue-waiting.svg?style=flat-square)](https://npmjs.com/package/vue-waiting)
 

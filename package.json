@@ -10,7 +10,9 @@
     "nuxt",
     "plugin",
     "loading",
-    "loader"
+    "loader",
+    "vue waiting",
+    "vue wait"
   ],
   "homepage": "https://github.com/chantouch/vue-waiting#readme",
   "repository": {
@@ -40,7 +42,8 @@
     "dev:vue": "poi examples/vue-example --prod",
     "dev:wrap": "poi examples/wrap-example --prod",
     "build-gh-pages": "poi build --out-dir=/tmp/gh-pages examples/vuex-example/index.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -51,8 +54,8 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.0",
-    "@commitlint/config-conventional": "^12.0.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@babel/core": "^7.0.0-beta.49",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
@@ -64,7 +67,7 @@
     "eslint": "^4.2.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "husky": "^4.3.8",
+    "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "poi": "^12.10.3",
     "prettier": "^1.19.1",
