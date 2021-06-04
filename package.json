@@ -70,7 +70,7 @@
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "poi": "^12.10.3",
-    "prettier": "^1.19.1",
+    "prettier": "^2.3.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "vue": "^2.6.12",
     "vue-html-loader": "^1.2.4",
