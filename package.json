@@ -36,7 +36,8 @@
     "vuex:dev": "poi examples/vuex-example --serve",
     "wrap:dev": "poi examples/wrap-example --serve",
     "transition:dev": "poi examples/transition-example --serve",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build": "npx webpack --env prod --env min",
+    "analyze": "npx webpack --analyze",
     "dev:transition": "poi examples/transition-example --prod",
     "dev:vuex": "poi examples/vuex-example --prod",
     "dev:vue": "poi examples/vue-example --prod",
@@ -54,11 +55,11 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
     "@babel/core": "^7.0.0-beta.49",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "babel-loader": "^8.0.0-beta.3",
     "cross-env": "^7.0.3",
     "css-loader": "^0.28.11",
@@ -79,6 +80,7 @@
     "vue-template-compiler": "^2.6.12",
     "vuex": "^3.6.2",
     "webpack": "^4.11.1",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.0"
   },
   "peerDependencies": {
