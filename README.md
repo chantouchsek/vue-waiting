@@ -11,18 +11,11 @@
 
 ![vue-waiting](https://user-images.githubusercontent.com/196477/42170484-4d91e36a-7e1f-11e8-9cee-816bfe857db2.gif)
 
-> [Play with demo above](https://f.github.io/vue-wait/).
-
 **vue-waiting** helps to manage multiple loading states on the page without any conflict. It's based on a **very simple
 idea** that manages an array (or Vuex store optionally) with multiple loading states. The **built-in loader component**
 listens its registered loader and immediately become loading state.
 
 # ⏩Quick Start
-
-If you are a **try and learn** developer, you can start trying the **vue-waiting** now
-using [codesandbox.io](https://codesandbox.io).
-
-[![Edit VueWaiting Sandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/85q3vpm42?autoresize=1&hidenavigation=1&module=%2Fsrc%2Fcomponents%2FMyList.vue)
 
 ### Note:
 
@@ -55,7 +48,7 @@ new Vue({
   <v-waiting for="my list is to load">
     <template slot="waiting">
       <div>
-        <img src="loading.gif"/>
+        <img src="loading.gif" alt="loading"/>
         Loading the list...
       </div>
     </template>
