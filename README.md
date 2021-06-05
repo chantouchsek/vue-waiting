@@ -187,6 +187,50 @@ You can use this options for customize VueWaiting behavior.
 | `registerDirective` | `Boolean` | `true` | Registers `v-waiting` directive. |
 | `directiveName` | `String` | `"v-waiting"` | Changes `v-waiting` directive name. |
 
+> If you change the property name, typescript will not understand your custom property. so you have to manually add below to your `shims-vue.d.ts` at the root of your project.
+
+### VueJs standalone
+
+```typescript
+// shims-vue.d.ts
+
+import VueWaiting from 'vue-waiting';
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $custmProperty: VueWaiting;
+    $custmProperty: VueWaiting;
+  }
+}
+
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    customProperty?: VueWaiting;
+    customProperty?: VueWaiting;
+  }
+}
+```
+
+### Working with `NuxtJs`
+
+```typescript
+// shims-vue.d.ts
+
+
+import VueWaiting from 'vue-waiting';
+
+declare module '@nuxt/types' {
+  interface Context {
+    $customProperty: VueWaiting;
+    $customProperty: VueWaiting;
+  }
+  interface NuxtAppOptions {
+    $customProperty: VueWaiting;
+    $customProperty: VueWaiting;
+  }
+}
+```
+
 ## 🌈 Global Template Helpers
 
 **vue-waiting** provides some helpers to you to use in your templates. All features can be obtained from $waiting
