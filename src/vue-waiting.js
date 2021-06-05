@@ -6,7 +6,7 @@ import {
   progress,
   percent,
   endProgress,
-  nodeIsDebug
+  nodeIsDebug,
 } from './utils'
 
 // Import to export
@@ -28,7 +28,7 @@ export default class VueWaiting {
       componentName: 'v-waiting',
       // Directives
       registerDirective: true,
-      directiveName: 'waiting'
+      directiveName: 'waiting',
     }
     this.options = Object.assign(defaults, options)
     this.initialized = false
@@ -69,15 +69,15 @@ export default class VueWaiting {
           is: () => (waiter) => store.getters[`${vuexModuleName}/is`](waiter),
           any: () => store.getters[`${vuexModuleName}/any`],
           percent: () => (waiter) =>
-            store.getters[`${vuexModuleName}/percent`](waiter)
-        }
+            store.getters[`${vuexModuleName}/percent`](waiter),
+        },
       })
     } else {
       this.stateHandler = new Vue({
         data() {
           return {
             waitingFor: [],
-            progresses: {}
+            progresses: {},
           }
         },
         computed: {
@@ -89,7 +89,7 @@ export default class VueWaiting {
           },
           percent() {
             return (waiter) => percent(this.progresses, waiter)
-          }
+          },
         },
         methods: {
           start(waiter) {
@@ -101,8 +101,8 @@ export default class VueWaiting {
           },
           progress({ waiter, current, total }) {
             this.progresses = progress(this.progresses, waiter, current, total)
-          }
-        }
+          },
+        },
       })
     }
 
@@ -129,7 +129,7 @@ export default class VueWaiting {
   dispatchWaitingAction(action, waiter) {
     const { vuexModuleName } = this.options
     this.store.dispatch(`${vuexModuleName}/${action}`, waiter, {
-      root: true
+      root: true,
     })
   }
 
@@ -179,7 +179,7 @@ export function install(Vue) {
 
   Vue.mixin({
     /**
-     * VueWaiting init hook, injected into each instances init hooks list.
+     * VueWaiting init hook, injected into each instances' init hooks list.
      */
     beforeCreate() {
       const { waiting, store, parent } = this.$options
@@ -199,7 +199,7 @@ export function install(Vue) {
         this.__$waitingInstance = instance
         this[instance.options.accessorName] = instance
       }
-    }
+    },
   })
 
   install.installed = true
@@ -210,7 +210,7 @@ export {
   mapWaitingActions,
   mapWaitingGetters,
   waitFor,
-  vWaitingComponent as VWaiting
+  vWaitingComponent as VWaiting,
 }
 
 VueWaiting.install = install
