@@ -3,7 +3,11 @@
   "description": "Vue Plugin for Global Loader Management",
   "version": "0.0.4",
   "license": "MIT",
-  "author": "Chantouch Sek <chantouchsek.cs83@gmail.com>",
+  "author": {
+    "name": "Chantouch Sek",
+    "email": "chantouchsek.cs83@gmail.com",
+    "url": "https://chantouch.me"
+  },
   "keywords": [
     "vue",
     "vuex",
@@ -69,10 +73,10 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
-    "husky": "^6.0.0",
+    "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
     "poi": "^12.10.3",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.14",
     "vue-html-loader": "^1.2.4",
