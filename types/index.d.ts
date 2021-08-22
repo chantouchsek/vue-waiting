@@ -14,7 +14,7 @@ export default class VueWaiting extends VueWaitingInstance {
 }
 
 /**
- * The vue-wait Instance
+ * The vue-waiting Instance
  */
 
 export class VueWaitingInstance {
