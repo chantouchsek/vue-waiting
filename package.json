@@ -74,7 +74,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
     "husky": "^7.0.1",
-    "lint-staged": "^11.0.0",
+    "lint-staged": "^12.1.5",
     "poi": "^12.10.3",
     "prettier": "^2.3.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
