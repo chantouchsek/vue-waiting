@@ -7,6 +7,6 @@ const pluginOptions = <%= serialize(options) %>
 const waiting = new VueWaiting(pluginOptions)
 
 export default ({ app }, inject) => {
-    app.waiting = waiting
+    app.$waiting = waiting
     inject('waiting', waiting)
 }
