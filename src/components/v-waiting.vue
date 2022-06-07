@@ -27,10 +27,10 @@
   </transition>
   <div v-else>
     <span v-if='waitsFor'>
-      <slot name='waiting'></slot>
+      <slot name='waiting' />
       <span v-if='message'>{{ message }}</span>
     </span>
-    <slot v-else></slot>
+    <slot v-else />
   </div>
 </template>
 <script>
