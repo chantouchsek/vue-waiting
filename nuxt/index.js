@@ -14,7 +14,7 @@ Usage:
         ],
 
         // Optionally passing options in module top level configuration
-        wait: { useVuex: true }
+        waiting: { useVuex: true }
     }
 */
 
