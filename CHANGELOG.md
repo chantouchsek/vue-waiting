@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.6](https://github.com/chantouch/vue-waiting/compare/v0.0.5...v0.0.6) (2022-06-07)
 
+
+### Bug Fixes
+
+* fix loop inject ([216a3bb](https://github.com/chantouch/vue-waiting/commit/216a3bb06a410102465b94ffb4e09961a7f89206))
+
+### [0.0.6](https://github.com/chantouch/vue-waiting/compare/v0.0.5...v0.0.6) (2022-06-07)
+
 ### [0.0.5](https://github.com/chantouch/vue-waiting/compare/v0.0.3...v0.0.5) (2022-06-07)
 
 
