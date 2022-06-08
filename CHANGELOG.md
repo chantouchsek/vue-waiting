@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/chantouch/vue-waiting/compare/v0.0.6...v0.0.7) (2022-06-08)
+
+
+### Bug Fixes
+
+* :fire: fix nuxt inject ([3772c01](https://github.com/chantouch/vue-waiting/commit/3772c0137f4e93e1110bb5ed8311c6cce6324462))
+
 ### [0.0.6](https://github.com/chantouch/vue-waiting/compare/v0.0.5...v0.0.6) (2022-06-07)
 
 
