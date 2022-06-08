@@ -13,7 +13,7 @@ import {
 import { mapWaitingActions, mapWaitingGetters, waitFor } from './helpers'
 
 import vuexStore from './vuex/store'
-import vWaitingComponent from './components/v-waiting.vue'
+import VWaiting from './components/v-waiting.vue'
 import vWaitingDirective from './directives/waiting.js'
 
 export default class VueWaiting {
@@ -46,7 +46,7 @@ export default class VueWaiting {
     }
 
     if (this.options.registerComponent) {
-      Vue.component(this.options.componentName, vWaitingComponent)
+      Vue.component(this.options.componentName, VWaiting)
     }
 
     if (this.options.registerDirective) {
@@ -206,11 +206,6 @@ export function install(Vue) {
 }
 
 // Export which are imported to export
-export {
-  mapWaitingActions,
-  mapWaitingGetters,
-  waitFor,
-  vWaitingComponent as VWaiting,
-}
+export { waitFor, VWaiting, mapWaitingActions, mapWaitingGetters }
 
 VueWaiting.install = install
