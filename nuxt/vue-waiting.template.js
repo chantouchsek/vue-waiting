@@ -3,9 +3,8 @@ import VueWaiting from 'vue-waiting';
 
 Vue.use(VueWaiting);
 
-const pluginOptions = <%= serialize(options) %>
-const waiting = new VueWaiting(pluginOptions)
-
 export default ({ app }, inject) => {
-    inject('waiting', waiting)
+    const pluginOptions = <%= serialize(options) %>
+    app.waiting = new VueWaiting(pluginOptions)
+    inject('wait', app.waiting)
 }

@@ -7,10 +7,10 @@ import VueWaiting from './';
 
 declare module '@nuxt/types' {
   interface Context {
-    $waiting: VueWaiting;
+    $wait: VueWaiting;
   }
   interface NuxtAppOptions {
-    $waiting: VueWaiting;
+    $wait: VueWaiting;
   }
 }
 
