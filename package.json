@@ -80,7 +80,7 @@
     "prettier": "^2.6.2",
     "standard-version": "^9.5.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "vue": "^2.6.14",
+    "vue": "^3.2.38",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.9.8",
     "vue-style-loader": "^4.1.3",
@@ -91,6 +91,6 @@
     "webpack-cli": "^4.8.0"
   },
   "peerDependencies": {
-    "vue": "^2.6.14"
+    "vue": "^3.2.38"
   }
 }
